@@ -2,10 +2,11 @@
 <div id="app">
   <header>
     <h1>My Music</h1>
-    <img src="show-photo.jpg" alt="">
+    
   </header>
   <main>
      <section class="player">
+     <img  :src="require(`./assets/${songs[2].photo}`)" alt="">
       <h2 class="song-title">{{current.title}}-<span>{{current.artist}}</span></h2>
       <div class="control">
         <button class="prev" @click="prev"><i class="fa-solid fa-backward"></i></button>
@@ -14,6 +15,7 @@
         <button class="next" @click="next"><i class="fa-solid fa-forward"></i></button>
       </div>
      </section>
+     
      <section class="playlist">
        <h3>The Playlist</h3>
        <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src ==current.src) ? 'song playing' : 'song'">
@@ -39,22 +41,28 @@ data() {
       {
         title:'Beau Young Prince',
         artist:'Let Go',
-        src:require('./assets/Beau Young Prince -Let Go.mp3')
+        src:require('./assets/Beau Young Prince -Let Go.mp3'),
+         photo: 'show-photo.jpg'
+        
       },
       {
         title:'Губы',
         artist:'Andro',
-        src:require('./assets/Andro - Губы.mp3')
+        src:require('./assets/Andro - Губы.mp3'),
+         photo: 'show-photo.jpg'
+
       },
       {
         title:'Blinding Lights',
         artist:'The Weeknd',
-        src:require('./assets/the-weeknd-blinding-lights.mp3')
+        src:require('./assets/the-weeknd-blinding-lights.mp3'),
+        photo: 'show-photo.jpg'
       },
       {
         title:'Mood',
         artist:'24kGoldn',
-        src:require('./assets/24kgoldn-mood-feat-iann-dior(mp3bit.cc).mp3')
+        src:require('./assets/24kgoldn-mood-feat-iann-dior(mp3bit.cc).mp3'),
+         photo: 'show-photo.jpg'
       }
     ],
     player: new Audio()
@@ -126,6 +134,13 @@ body{
   font-family: sans-serif;
   background:black;
   
+}
+img{
+  width: 200px;
+  height: 200px;
+  margin-left: 270px;
+  border-radius: 50%;
+
 }
 header{
   display: flex;
